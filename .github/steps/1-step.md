@@ -111,7 +111,7 @@ Before we dive into MCP, let's start up our development environment and refamili
            "--rm",
            "-e",
            "GITHUB_PERSONAL_ACCESS_TOKEN",
-           "ghcr.io/github/github-mcp-server:v0.5.0"
+           "ghcr.io/github/github-mcp-server:latest"
          ],
          "env": {
            "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
