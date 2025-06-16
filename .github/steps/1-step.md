@@ -102,6 +102,14 @@ Before we dive into MCP, let's start up our development environment and refamili
 
    ```json
    {
+     "inputs": [
+       {
+         "type": "promptString",
+         "id": "github_token",
+         "description": "GitHub Personal Access Token",
+         "password": true
+       }
+     ],
      "servers": {
        "github": {
          "command": "docker",
@@ -111,21 +119,13 @@ Before we dive into MCP, let's start up our development environment and refamili
            "--rm",
            "-e",
            "GITHUB_PERSONAL_ACCESS_TOKEN",
-           "ghcr.io/github/github-mcp-server:latest"
+           "ghcr.io/github/github-mcp-server"
          ],
          "env": {
            "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
          }
        }
-     },
-     "inputs": [
-       {
-         "type": "promptString",
-         "id": "github_token",
-         "description": "GitHub Personal Access Token",
-         "password": true
-       }
-     ]
+     }
    }
    ```
 
