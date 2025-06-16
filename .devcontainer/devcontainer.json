@@ -1,6 +1,6 @@
 {
   "name": "Python 3",
-  "image": "mcr.microsoft.com/vscode/devcontainers/python:3.13",
+  "image": "mcr.microsoft.com/devcontainers/python:latest",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "latest"
