@@ -7,7 +7,7 @@ on:
       - ".vscode/mcp.json"
 
 permissions:
-  contents: read
+  contents: write
   actions: write
   issues: write
 
@@ -33,8 +33,13 @@ jobs:
             exit 1
           fi
 
-      - name: Step 5 finished
-        run: echo "Step 5 complete!"
+      - name: Update comment - step finished - final review next
+        run: |
+          gh issue comment "$ISSUE_URL" \
+            --body-file exercise-toolkit/markdown-templates/step-feedback/lesson-review.md \
+            --edit-last
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   post_review_content:
     name: Post review content
@@ -52,7 +57,7 @@ jobs:
       - name: Create comment - add review content
         run: |
           gh issue comment "$ISSUE_URL" \
-            --body-file ${{ env.STEP_5_FILE }}
+            --body-file ${{ env.REVIEW_FILE }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

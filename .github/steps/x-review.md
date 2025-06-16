@@ -6,7 +6,6 @@ _Congratulations, you've completed this Exercise and learned the basics of MCP !
 
 ### What's next?
 
-
 Check out these resources to learn more or get involved:
 
 - [Take another GitHub Skills exercise](https://skills.github.com).

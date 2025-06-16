@@ -5,7 +5,7 @@ on:
     types: [created]
 
 permissions:
-  contents: write
+  contents: read
   actions: write
   issues: write
 
@@ -42,13 +42,21 @@ jobs:
       # The trigger is enough. We just want to see that
       # comment was added.
 
-      - name: Update comment - step finished - final review next
+      - name: Build message - step finished
+        id: build-message-step-finish
+        uses: skills/action-text-variables@v1
+        with:
+          template-file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
+          template-vars: |
+            next_step_number=5
+
+      - name: Update comment - step finished
         run: |
           gh issue comment "$ISSUE_URL" \
-            --body-file exercise-toolkit/markdown-templates/step-feedback/lesson-review.md \
+            --body "${{ steps.build-message-step-finish.outputs.updated-text }}" \
             --edit-last
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
 
   post_next_step_content:
     name: Post next step content

@@ -131,10 +131,21 @@ Before we dive into MCP, let's start up our development environment and refamili
    ```
 
    > :placard: **Note:** The cwd (current working directory) is set to `${workspaceFolder}`, which appears to be needed to run MCP servers in a dev container. This appears to be a [bug](https://github.com/microsoft/vscode/issues/251503) in the latest version of VS Code.
-   
-   > :placard: **Note:** Entering a hard-coded token is never recommended, you should use input variables or envFiles when an MCP server requires credentials.
 
-1. Expand the VS Code terminal panel. Run the following command to view and **make a copy** of your codespace's GitHub Token.
+   Entering a hard-coded token is never recommended! As in the example above, you should use input variables or environment variables when an MCP server requires credentials. Better yet, if the MCP server supports it, use OAuth to authenticate. Choose whatever you feel most comfortable with.
+
+   ```json
+   {
+     "servers": {
+       "github-remote": {
+         "type": "http",
+         "url": "https://api.githubcopilot.com/mcp/"
+       }
+     }
+   }
+   ```
+
+1. When not using the GitHub remote MCP server expand the VS Code terminal panel. Run the following command to view and **make a copy** of your codespace's GitHub Token when prompted.
 
    ```bash
       echo $GITHUB_TOKEN
@@ -147,7 +158,7 @@ Before we dive into MCP, let's start up our development environment and refamili
 
    </details>
 
-1. In the `.vscode/mcp.json` file, click the **Start** button and provide the token. This has just informed GitHub Copilot of the MCP server's capabilities.
+1. In the `.vscode/mcp.json` file, click the **Start** button and provide the token when using the local MCP server. When the server starts, it informs GitHub Copilot of the MCP server's capabilities.
 
    ![image](https://github.com/user-attachments/assets/62ee9c06-e9d4-44e4-b6df-f93417474af2)
 
