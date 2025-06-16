@@ -112,7 +112,8 @@ Before we dive into MCP, let's start up our development environment and refamili
      ],
      "servers": {
        "github": {
-         "command": "docker",
+         "cwd": "${workspaceFolder}",
+         "command": "docker", 
          "args": [
            "run",
            "-i",
@@ -129,6 +130,8 @@ Before we dive into MCP, let's start up our development environment and refamili
    }
    ```
 
+   > :placard: **Note:** The cwd (current working directory) is set to `${workspaceFolder}`, which appears to be needed to run MCP servers in a dev container. This appears to be a [bug](https://github.com/microsoft/vscode/issues/251503) in the latest version of VS Code.
+   
    > :placard: **Note:** Entering a hard-coded token is never recommended, you should use input variables or envFiles when an MCP server requires credentials.
 
 1. Expand the VS Code terminal panel. Run the following command to view and **make a copy** of your codespace's GitHub Token.
