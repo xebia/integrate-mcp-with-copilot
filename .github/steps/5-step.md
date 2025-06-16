@@ -11,6 +11,7 @@ FastAPI MCP is a library that makes it easy to expose your FastAPI endpoints as 
 1. **Install the FastAPI MCP package**
 
    In your terminal, run:
+
    ```bash
    pip install fastapi-mcp
    ```
@@ -36,10 +37,13 @@ FastAPI MCP is a library that makes it easy to expose your FastAPI endpoints as 
 3. **Run your application**
 
    Start your FastAPI app as usual:
+
    ```bash
    python src/app.py
    ```
+
    or (if using uvicorn):
+
    ```bash
    uvicorn src.app:app --reload
    ```
@@ -72,6 +76,7 @@ FastAPI MCP is a library that makes it easy to expose your FastAPI endpoints as 
 ---
 
 #### :star: Best Practices
+
 - Use clear `operation_id` values for your endpoints.
 - Add descriptions to your endpoints for better AI understanding.
 - Secure your API if exposing it beyond local development.
