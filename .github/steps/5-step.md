@@ -1,10 +1,10 @@
 ## Step 5: Expose Your FastAPI API as an MCP Server
 
-Great job so far! Now, let's make your API even more powerful by exposing it as an MCP (Model Context Protocol) server using FastAPI MCP. This will allow AI tools like Copilot to discover and use your endpoints as tools.
+Great job so far! Now, let's make your API even more powerful by exposing it as an MCP server using FastAPI MCP.
 
 ### :rocket: What is FastAPI MCP?
 
-FastAPI MCP is a library that makes it easy to expose your FastAPI endpoints as MCP tools. MCP is like a "USB-C for AI"—it lets AI assistants connect to your API and use its capabilities in a standardized way.
+FastAPI MCP is a library that makes it easy to expose your FastAPI endpoints as MCP tools. It provides a simple way to integrate your API with AI assistants.
 
 ### :keyboard: Activity: Add MCP support to your API
 
@@ -49,9 +49,9 @@ FastAPI MCP is a library that makes it easy to expose your FastAPI endpoints as 
    npx @modelcontextprotocol/inspector
    ```
 
-   This will start the MCP Inspector, which helps you discover and test your MCP endpoints. Open the URL it provides in your browser and configure your MCP server (use SSE).
+   This will start the [MCP Inspector](https://github.com/modelcontextprotocol/inspector), which helps you discover and test your MCP endpoints. Open the URL it provides in your browser and configure your MCP server (use SSE).
 
-   Have a look at the tools that are available and run them.
+   Have a look at the tools that are found and run them. If you want, you can configure fastapi-mcp to exclude certain endpoints or customize the tool names. See the [fastapi-mcp documentation on customization](https://fastapi-mcp.tadata.com/configurations/customization#code-samples) for more details.
 
 5. **Update `.vscode/mcp.json` to add the new MCP endpoint**
 
@@ -76,12 +76,21 @@ FastAPI MCP is a library that makes it easy to expose your FastAPI endpoints as 
    - Open Copilot Chat and select your new FastAPI MCP server as a tool.
    - Ask Copilot to list available tools or call your endpoints.
 
+7. **Time left?**
+
+   Some ideas to explore:
+
+   - Create a reusable prompt in VS code that is configured to use your tools.
+   - See how fast you can add MCP support to an API of your own.
+   - Try out a few other MCP servers.
+   - Read up on [sampling](https://modelcontextprotocol.io/docs/concepts/sampling), which wasn't covered in this workshop but is a powerful feature of MCP servers.
+
 #### :star: Best Practices
 
 - Use clear `operation_id` values for your endpoints.
 - Add descriptions to your endpoints for better AI understanding.
 - Secure your API if exposing it beyond local development.
-- See [modelcontextprotocol.io best practices](https://modelcontextprotocol.io/docs/concepts/tools#best-practices) and [fastapi-mcp best practices](https://fastapi-mcp.tadata.com/getting-started/best-practices) for more!
+- See [modelcontextprotocol.io best practices](https://modelcontextprotocol.io/docs/concepts/tools#best-practices) and [fastapi-mcp best practices](https://fastapi-mcp.tadata.com/getting-started/best-practices) for many more!
 
 <details>
 <summary>Having trouble?</summary>

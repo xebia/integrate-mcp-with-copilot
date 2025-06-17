@@ -36,7 +36,7 @@ Isn't that cool?! Now let's do it! 👩‍🚀
    > Are there any other repositories for organizing extra curricular activities?
    > ```
 
-1. When a local MCP tool is required, Copilot will ask for permission. With remote tools, this is not always the case anymore. For GitHub it appears to only ask when making changes on your behalf. Next **Verify the request** and modify if necessary, then click **Continue**.
+1. When a MCP tool is required, Copilot will ask for permission. For MCP resources or MCP prompts it will not, as these actions should be read-only and not have any side-effects. If you can, always **verify the request** and modify if necessary, then click **Continue**:
 
    <img width="250" alt="request permission dialog" src="https://github.com/user-attachments/assets/229473af-c206-47a4-b356-943b9c9bd946" />
 
