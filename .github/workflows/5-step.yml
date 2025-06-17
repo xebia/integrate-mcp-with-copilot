@@ -20,18 +20,31 @@ jobs:
     uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.3.0
 
   check_step_work:
-    name: Check Step 5 Work
+    name: Check step work
+    needs: find_exercise
     runs-on: ubuntu-latest
+    if: |
+      !github.event.repository.is_template
+    env:
+      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Validate step 5 instructions
         run: |
-          if ! grep -q '/mcp' .vscode/mcp.json; then
-            echo "mcp.json must include the /mcp endpoint."
+          if ! grep -q 'mergington-mcp' .vscode/mcp.json; then
+            echo "mcp.json must include the an MCP server called mergington-mcp."
             exit 1
           fi
+
+      - name: Get response templates
+        uses: actions/checkout@v4
+        with:
+          repository: skills/exercise-toolkit
+          path: exercise-toolkit
+          ref: v0.3.0
 
       - name: Update comment - step finished - final review next
         run: |

@@ -3,8 +3,9 @@
 <img width="150" align="right" alt="copilot logo" src="https://github.com/user-attachments/assets/4d22496d-850b-4785-aafe-11cba03cd5f2" />
 
 In the [Getting Started with GitHub Copilot](https://github.com/skills/getting-started-with-github-copilot) exercise, we were introduced to the Mergington High School's extracurricular activities website, which allowed students to sign up for events.
+If you haven't completed that exercise, see the README.md in the src folder for a little more information about the application.
 
-And now we have a problem... but.. it's a good one! More teachers are asking to use it! 🎉
+Now we have a problem... but.. it's a good one! More teachers are asking to use it! 🎉
 
 Our fellow teachers have lots of ideas but we can't seem to keep up with all the requests! 😮 To fix this issue, lets give GitHub Copilot an upgrade by enabling Model Context Protocol (MCP). To be more specific, we will add the GitHub MCP server, which will enable a combined workflow of issue management and website upgrades. 🧑‍🚀
 
@@ -41,14 +42,23 @@ graph LR
 
 Before we dive into MCP, let's start up our development environment and refamiliarize ourself with the extracurricular activity application.
 
-1. Right-click the below button to open the **Create Codespace** page in a new tab. Use the default configuration.
+The first part of the exercise can be done in a GitHub codespace or your local environment. The final steps of the exercise will only work on your local development environment.
+You can switch to your local environment at any time by cloning this repository to your local machine. Make sure you have the following VS Code extensions installed, then open the dev container. It should prompt you automatically asking you to do this.
 
-   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/{{full_repo_name}}?quickstart=1)
+- [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+- [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)
+- [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) (only for local development)
+- [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+- [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.pylance)
+- [Python Debugger](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy)
 
-1. Validate the **Copilot Chat** and **Python** extensions are installed and enabled.
+If you want to start in a GitHub codespace, right-click the below button to open the **Create Codespace** page in a new tab. Use the default configuration.
 
-   <img width="300" alt="copilot extension for VS Code" src="https://github.com/user-attachments/assets/ef1ef984-17fc-4b20-a9a6-65a866def468" /><br/>
-   <img width="300" alt="python extension for VS Code" src="https://github.com/user-attachments/assets/3040c0f5-1658-47e2-a439-20504a384f77" />
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/{{full_repo_name}}?quickstart=1)
+
+Next, perform these checks:
+
+1. Validate the extensions listed above are installed and enabled.
 
 1. Verify our application runs before modification. In the left sidebar, select the **Run and Debug** tab and then press the **Start Debugging** icon.
 
@@ -81,7 +91,7 @@ Before we dive into MCP, let's start up our development environment and refamili
 
 ### :keyboard: Activity: Add the GitHub MCP server
 
-1. Inside your codespace, open the **Copilot Chat** panel and verify **Agent** mode is selected.
+1. Inside your IDE, open the **Copilot Chat** panel and verify **Agent** mode is selected.
 
    <img width="200" alt="image" src="https://github.com/user-attachments/assets/201e08ab-14a0-48bf-824e-ba4f8f43f8ab" />
 
@@ -96,7 +106,7 @@ Before we dive into MCP, let's start up our development environment and refamili
 
    </details>
 
-1. Inside your codespace, create a new file named `mcp.json` in the `.vscode` directory and paste the following contents:
+1. Inside your IDE, create a new file named `mcp.json` in the `.vscode` directory and paste the following contents for running the GitHub MCP server locally. Scroll down for the remote MCP server configuration.
 
    📄 **.vscode/mcp.json**
 
@@ -130,9 +140,9 @@ Before we dive into MCP, let's start up our development environment and refamili
    }
    ```
 
-   > :placard: **Note:** The cwd (current working directory) is set to `${workspaceFolder}`, which appears to be needed to run MCP servers in a dev container. This appears to be a [bug](https://github.com/microsoft/vscode/issues/251503) in the latest version of VS Code.
+   The cwd (current working directory) is set to `${workspaceFolder}`, which appears to be needed to run MCP servers in a dev container. This appears to be a [bug](https://github.com/microsoft/vscode/issues/251503) in the latest version of VS Code.
 
-   Entering a hard-coded token is never recommended! As in the example above, you should use input variables or environment variables when an MCP server requires credentials. Better yet, if the MCP server supports it, use OAuth to authenticate. Choose whatever you feel most comfortable with.
+   Entering a hard-coded token is never recommended! As in the example above, you should use input variables or an [envFile](https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_configuration-format) when an MCP server requires credentials. Better yet, if the MCP server supports it, use OAuth to authenticate. Choose whatever you feel most comfortable with.
 
    ```json
    {
@@ -145,7 +155,7 @@ Before we dive into MCP, let's start up our development environment and refamili
    }
    ```
 
-1. When not using the GitHub remote MCP server expand the VS Code terminal panel. Run the following command to view and **make a copy** of your codespace's GitHub Token when prompted.
+1. If you chose the local GitHub MCP server, expand the VS Code terminal panel. Run the following command to view and **make a copy** of your codespace's GitHub Token. You'll need this in the next step.
 
    ```bash
       echo $GITHUB_TOKEN
@@ -158,7 +168,7 @@ Before we dive into MCP, let's start up our development environment and refamili
 
    </details>
 
-1. In the `.vscode/mcp.json` file, click the **Start** button and provide the token when using the local MCP server. When the server starts, it informs GitHub Copilot of the MCP server's capabilities.
+1. In the `.vscode/mcp.json` file, click the **Start** button and provide the token from the previous step if needed. When the server starts, it informs GitHub Copilot of the MCP server's capabilities.
 
    ![image](https://github.com/user-attachments/assets/62ee9c06-e9d4-44e4-b6df-f93417474af2)
 
